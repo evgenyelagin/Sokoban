@@ -66,19 +66,22 @@ public class Logic {
         for (int i = 0; i < table.length; i++) {
             boolean rowCheck = true;
             boolean columnCheck = true;
-                for (int j = 0; j < table.length; j++) {
-                    if ((columnCheck) && (1 != table[i][j])) {
-                        columnCheck = false;
-                    }
-                    if ((rowCheck) && (1 != table[j][i])) {
-                        rowCheck = false;
-                    }
+            for (int j = 0; j < table.length; j++) {
+                if ((columnCheck) && (1 != table[i][j])) {
+                    columnCheck = false;
                 }
-                if (rowCheck || columnCheck) {
-                    result = true;
+                if ((rowCheck) && (1 != table[j][i])) {
+                    rowCheck = false;
+                }
+                if (!rowCheck && !columnCheck) {
                     break;
                 }
             }
+            if (rowCheck || columnCheck) {
+                result = true;
+                break;
+            }
+        }
         return result;
     }
 
